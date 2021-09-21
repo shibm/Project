@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset             ="utf-8">
+  <title>sudo</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type               ="text/javascript">
+    $(function() {
+    $(".child").on("click",function() {
+      $parent              = $(this).prevAll(".parent");
+      if ($(this).is("     :checked",))
+        $(this).parent().siblings(".parent").prop("checked",true);
+      else {
+         var len           = $(this).parent().find(".child:checked",).length;
+         $(".parent").prop("checked",false);
+         console.log(len)
+            }    
+          });
+    $(".parent").on("click",function() {
+     $(this).parent().find(".child").prop("checked",this.checked);
+      console.log("test2")
+        });
+
+    $("#current").find("#button").on("click",function(){
+      console.log("id")
+    })
+      });
+
+    //button to add checkbox and user input text 
+    $(function myFunction(){
+      $("#btnsave").click(function () {
+      console.log("add")
+       addCheckbox($('#txtName').val());
+      
+      });
+        });
+    
+    function addCheckbox() {
+      // current under cout li
+      var name = $("#txtname").val();
+      var count = $('div #current li').length
+      var id = `new_${count + 1}`
+      var hasError= false;
+      
+      if(name == ''){
+        hasError = true
+       alert("fill up")
+      } else {
+        // some unique id thing 
+        $("#current").append($('<div/>',{
+          id:id
+        }));
+    
+          $('<input />', { type : 'checkbox', id: 'cb'+id, value: name }).appendTo(`#${id}`);
+          $('<label />', { 'for': 'cb'+id, text: name }).appendTo(`#${id}`);
+          $("#txtname").val('');
+          $("<button>fsf</button>",{id: 'bt'+id}).appendTo(`#${id}`)
+        }
+      }
+
+
+        
+</script>
+<body>  
+
+        <div>
+
+        <input type        ="checkbox" class="parent" >Property
+            <li>
+              <input type  ="checkbox" class="child" />Edit property
+            </li>
+            <li>
+                <input type="checkbox" class="child" />Remove Property
+            </li>
+            <li>
+                <input type="checkbox" class="child" />Add Property
+            
+
+              <div id="current"> </div>
+              <input type ="text" id="txtname" />
+
+              <button id  ="btnsave"> ADD  </button>
+              <button id ="btrm" > Remove </button>
+            </li>
+    </div>
+    <br>
+  <div >
+      <input type          ="checkbox" class="parent" value="0" />Testimonial
+      <li>
+        <input type        ="checkbox" class="child" />Add
+      </li>
+      <li>
+        <input type        ="checkbox" class="child" />Remove
+      </li>
+      <li>
+        <input type        ="checkbox" class="child" />View
+      </li>
+      <li>
+        <input type        ="checkbox" class="child" />Edit
+      </li>   
+  </div>
+
+  <div>
+    <input type            ="checkbox" class="parent" />Users
+
+      <li>
+        <input type        ="checkbox" class="child" />Edit User
+      </li>
+      <li>
+        <input type        ="checkbox" class="child" />View User List
+      </li>
+      <li>
+        <input type        ="checkbox" class="child" />Add_User
+      </li>
+  </div>
+
+  <div>
+    <input type            ="checkbox" class="parent" />Membership
+      <li>
+        <input type        ="checkbox" class="child" />Edit Membership
+      </li>
+      <li>
+        <input type        ="checkbox" class="child" />Remove
+      </li>
+  </div>
+</body>
+</html>

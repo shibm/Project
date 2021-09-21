@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+        login page
+    </title>
+    <script src="jquery-3.6.0.js"> </script>
+        <script >
+            $(document).ready(function(){   
+
+                $("#btn-submit").click(function(){
+                $('.error').hide();
+                var hasError = false;   
+                var trm= $("#terms").is(":checked");
+                console.log(trm)
+                var emailaddressVal = $("#UserEmail").val();
+                var email = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                
+                if (emailaddressVal ==''){
+                    //$("#UserEmail").after('<span class="error">Please enter your email address.</span>');
+                    hasError = true;
+                    alert("enter mail address");
+                }
+                else if (!email.test(emailaddressVal)) {
+                    //$("#UserEmail").after('<span class="error">please enter your valid email address .</span>');
+                        hasError = true;
+                       alert('invalid email');
+                    }
+                    if (hasError == true) {return false;}
+                
+
+                var password = $("#txtPassword").val();
+                var confirmPassword = $("#txtconfirmPassword").val();
+                if (password == ''  ){
+                    alert('fill password')
+                }
+
+                else if (password!==confirmPassword)
+                {
+                    alert("passwords do not match.");
+                    return false;
+
+                }
+                else {
+                    
+                        if (trm){
+                            alert("submitted")
+                        }
+
+                        else {
+                            
+                            alert ("fill checkbox");
+                        }
+                    };
+                });
+                
+            });
+        
+        </script>
+</head>
+<body>
+    <form id="basic-form" action="" method="post">
+    <table border="0" cellpadding="3" cellspacing="0">
+        <tr>
+            <td>
+                <label> Email: </label>
+            </td>
+            <td>
+                <input type="text" name="UserEmail" id="UserEmail" placeholder="Enter your mail id" value="" />
+            </td>  
+        </tr>
+        <tr>
+            <td>
+                Password:
+            </td>
+            <td>
+                <input type="Password" id="txtPassword" placeholder="New Password" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Confirm Password:
+            </td>
+            <td>
+                <input type="Password" id="txtconfirmPassword" placeholder="Confirm Password" />
+            </td>
+        </tr>
+        <tr>
+            <br>
+            <td>
+                
+            </td>
+        </tr>
+    </table>
+    <p>
+        <label> <input type="checkbox" name="terms[]" value="your value" id="terms"> I agree the <u> terms & conditions </u> </label>
+    </p>
+    <input type="submit" id="btn-submit" value="Submit" />
+</form>
+</body>
+</html>

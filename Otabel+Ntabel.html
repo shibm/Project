@@ -1,0 +1,183 @@
+<html>
+  <head>
+    <title>JSON Data</title>
+    <style>
+        th, td, p, input {
+            font:14px Verdana;
+        }
+        table, th, td 
+        {
+            border: solid 1px #DDD;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+        th {
+            font-weight:bold;
+        }
+    </style>
+
+    <script>
+    function OpenForm(){
+        var = table=document.getElementById("mytable");
+        var row=table.insertRow(0);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = "fname"
+        cell2.innerHTML = "lname"
+    }
+
+    function myDeleteFunction(){
+        document.getElementById("mytable").deleteRow(0);
+    }
+
+</script>
+    <script>
+      $(document).ready(function(){
+        $("button").click(function(){
+          $("p").slideToggle();
+        });
+      });
+
+
+        function CreateTableFromJSON() {
+            var family
+     = [
+                {
+                    "fname": "Naruto",
+                    "lname": "Uzumaki",
+                    "bd":    "Oct 10",
+                    "sex":   "M"
+                },
+                
+                {
+                    "fname": "Sakura",
+                    "lname": "Haruno",
+                    "bd":    "Mar 28",
+                    "sex":   "F"
+                },
+                {
+                    "fname": "Sai",
+                    "lname": "Yamanaka",
+                    "bd":    "Nov 25",
+                    "sex":   "M"
+                },
+                {
+                    "fname": "Kakashi",
+                    "lname": "Hatake",
+                    "bd":    "Sep 15",
+                    "sex":   "M"
+                },
+               
+            ]
+            
+            var col = [];
+            for (var i = 0; i < family.length; i++) {
+                for (var key in family[i]) {
+                    if (col.indexOf(key) === -1) {
+                        col.push(key);
+                    }
+                }
+            }
+            var table = document.createElement("table");
+
+            var tr = table.insertRow(-1);                   
+
+            for (var i = 0; i < col.length; i++) {
+                var th = document.createElement("th");      
+                th.innerHTML = col[i];
+                tr.appendChild(th);
+            }
+
+            
+            for (var i = 0; i < family.length; i++) {
+
+                tr = table.insertRow(-1);
+
+                for (var j = 0; j < col.length; j++) {
+                    var tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = family[i][col[j]];
+                }
+            }
+
+            
+            var divContainer = document.getElementById("showData");
+            divContainer.innerHTML = "";
+            divContainer.appendChild(table);
+        }
+      </script>
+    <script type="text/javascript"> 
+  let arr =[];
+      function entry() {
+        var DoB = document.sample.DoB.value;
+        
+        var fname = document.sample.fname.value;
+        
+        var lname = document.sample.lname.value;
+        
+        var tr = document.createElement("tr");
+
+        var td1 = tr.appendChild(document.createElement("td"));
+        var td2 = tr.appendChild(document.createElement("td"));
+        var td3 = tr.appendChild(document.createElement("td"));
+        
+
+        td1.innerHTML = DoB;
+        td2.innerHTML = fname;
+        td3.innerHTML = lname;
+console.log({fname:fname,lname:lname,DoB:DoB})
+arr.push({"fname":fname, "lname":lname,"DoB":DoB})
+
+
+
+ var tableBody =
+          '<table width="25%" cellpadding="3" border="1"><tr><td>fname</td><td>lname</td><td>bd</td></tr>';
+
+        arr.forEach(function (d) {
+          tableBody +=
+            "<tr><td>" +
+            d.fname + 
+            "</td><td>" +
+            d.lname +
+            "</td><td>" +
+            d.DoB +
+            "</td></tr>";
+        });
+        tableBody += "<table>";
+
+        var divContainer = document.getElementById("showData");
+        divContainer.innerHTML = tableBody;
+        
+      } 
+    </script>
+  </head>
+  <body>
+   
+    <p id="showData"></p>
+    <br/>
+
+    <form method="post" name="sample">
+      <br />
+      bd: <input type="text" name="DoB" /> 
+      fname:
+      <input type="text" name="fname" /><br /><br />
+      lname: <input type="text" name="lname" /><br /><br />
+
+      
+      <hr />
+  
+    </form>
+    <div style="text-align: center;">
+        <form>
+     <input type="button" name="" onclick="CreateTableFromJSON()" value="Show Table"> 
+     <input
+        type="button" name="add" value="Add Data" onclick="entry();">
+    <p id="showData"></p>
+
+
+   
+
+</form>
+</div>
+  </body>
+</html>

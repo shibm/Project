@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  
+  <title>click demo</title>
+  <script type="text/javascript" src="jquery-3.6.0.js"></script>
+  <style> span{ display: none; } </style>
+</head>
+  <body>
+
+	<p>To download hd wallpapers:- <a href="https://www.hdwallpapers.in/">Visit  </a> 
+	</p>
+
+	<h5><p>
+		Youtube:-<a href="https://www.youtube.com/watch?v=dWSqqckKjVM">click</a>
+	</p></h5>
+
+
+	<pre>Twinkle Twinkle little star 
+	how I wonder slideing up !
+	</pre>
+
+<input>
+		<span> Nice to see you ! </span>
+		<p> Click in the input field to get focus. </p>
+
+	<script>
+		$(document).ready(function(){
+		$("h5").click(function(event){
+			event.preventDefault();
+			alert("underage")
+			});
+		});
+				$("input").focus(function(){
+				$("span").css("display","inline").fadeOut(2000);
+		});
+		</script>		
+		<script>		
+		$(document).ready(function(){
+		$("p").hover(function(){
+    $(this).css("background-color", "yellow");
+    }, function(){
+    $(this).css("background-color", "pink");
+  	});
+	});
+		
+	</script>
+
+
+	<script >
+	$(document).ready(function(){
+  $("pre").mouseenter(function(){
+    $("pre").css("background-color", "yellow");
+  });
+  $("pre").mouseleave(function(){
+    $("pre").css("background-color", "red");
+  });
+});
+	</script>
+</body>
+</html>
+
+
+
